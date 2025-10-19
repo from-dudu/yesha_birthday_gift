@@ -98,7 +98,7 @@ canvas {
     top: 0;
 }
 
-.container > div {
+.container>div {
     position: absolute;
     left: 0;
     right: 0;
@@ -109,7 +109,7 @@ canvas {
     font-size: 4.5rem;
 }
 
-.one > img {
+.one>img {
     vertical-align: middle;
     margin-bottom: 10px;
     max-width: 100%;
@@ -388,7 +388,7 @@ canvas {
     box-shadow: 0 2px 0 #b3b3b3, 0 4px 0 #b3b3b3, 0 5px 40px rgba(0, 0, 0, 0.5);
 }
 
-.cake > * {
+.cake>* {
     position: absolute;
 }
 
@@ -509,18 +509,22 @@ canvas {
         transform: skewX(5deg);
         box-shadow: 0 0 10px rgba(255, 165, 0, 0.2), 0 0 20px rgba(255, 165, 0, 0.2), 0 0 60px rgba(255, 165, 0, 0.2), 0 0 80px rgba(255, 165, 0, 0.2);
     }
+
     25% {
         transform: skewX(-5deg);
         box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
     }
+
     50% {
         transform: skewX(10deg);
         box-shadow: 0 0 10px rgba(255, 165, 0, 0.3), 0 0 20px rgba(255, 165, 0, 0.3), 0 0 60px rgba(255, 165, 0, 0.3), 0 0 80px rgba(255, 165, 0, 0.3);
     }
+
     75% {
         transform: skewX(-10deg);
         box-shadow: 0 0 10px rgba(255, 165, 0, 0.4), 0 0 20px rgba(255, 165, 0, 0.4), 0 0 60px rgba(255, 165, 0, 0.4), 0 0 80px rgba(255, 165, 0, 0.4);
     }
+
     100% {
         transform: skewX(5deg);
         box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
@@ -543,4 +547,19 @@ canvas {
     display: inline-flex;
     width: fit-content;
     white-space: nowrap;
+}
+
+.five {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+    text-align: center;
+    overflow-y: auto;
+    /* enables vertical scroll */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }

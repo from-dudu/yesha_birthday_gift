@@ -300,7 +300,7 @@ const animationTimeline = () => {
   const replyBtn = document.getElementById("replay");
   replyBtn.addEventListener("click", () => {
     // window.location.reload();
-    window.location.href = "../../second/index.html";
+    window.location.href = "../second/";
   });
 };
 
