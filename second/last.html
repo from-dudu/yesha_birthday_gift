@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Beautiful Memories ✨</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg,
+                    #ffd1dc 0%,
+                    #e6e6fa 25%,
+                    #ffefd5 50%,
+                    #e6e6fa 75%,
+                    #ffd1dc 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            font-family: 'Quicksand', sans-serif;
+            overflow-x: hidden;
+            color: #4a4a4a;
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Enhanced Sparkle Effect */
+        .magic-sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: white;
+            animation: twinkle var(--duration, 4s) ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+        }
+
+        /* Generate 50 sparkles with different positions and animations */
+        .magic-sparkles::before,
+        .magic-sparkles::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, white 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: sparkleLayer 8s linear infinite;
+            opacity: 0.5;
+        }
+
+        .magic-sparkles::after {
+            animation-delay: -4s;
+            transform: rotate(45deg);
+        }
+
+        @keyframes sparkleLayer {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-50px);
+            }
+        }
+
+        /* Floating Hearts */
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 105, 180, 0.6);
+            animation: floatHeart var(--float-duration, 6s) ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translate(0, 100vh) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(var(--translate-x, 0), -100vh) rotate(360deg);
+            }
+        }
+
+        /* Welcome Section */
+        .welcome {
+            text-align: center;
+            padding: 1rem 2rem 4rem;
+            position: relative;
+            z-index: 3;
+            color: white;
+        }
+
+        .welcome h1 {
+            font-family: 'SF Pro Display', 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 3.2rem;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.4),
+                0 0 25px rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(6px) saturate(150%);
+            -webkit-backdrop-filter: blur(6px) saturate(150%);
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .welcome p {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            backdrop-filter: blur(6px) saturate(150%);
+            -webkit-backdrop-filter: blur(6px) saturate(150%);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+
+        /* Enhanced Memory Cards */
+        .memory-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            z-index: 3;
+            position: relative;
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .memory-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+
+        .memory-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .memory-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            transition: transform 0.5s ease;
+        }
+
+        .memory-card:hover .memory-img {
+            transform: scale(1.05);
+        }
+
+        .memory-date {
+            font-family: 'Dancing Script', cursive;
+            color: #ff69b4;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .memory-caption {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        /* Final Message Section */
+        .final-message {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            margin-top: 3rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .final-message h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #ff69b4;
+            margin-bottom: 2rem;
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .final-message p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .goodbye-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #ff69b4, #da70d6);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .goodbye-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Generate Hearts */
+        .js-generate-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ff69b4, #da70d6);
+            border-radius: 6px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .welcome h1 {
+                font-size: 3rem;
+            }
+
+            .memory-container {
+                grid-template-columns: 1fr;
+            }
+
+            .final-message h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Gallery Section Container */
+        .dynamic-gallery-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .dynamic-gallery-container h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            text-align: center;
+            color: #da70d6;
+            margin-bottom: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* The core of the dynamic grid layout */
+        .dynamic-gallery-grid {
+            display: grid;
+            /* Creates responsive columns that are at least 280px wide */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            /* Automatically adjusts row heights */
+            grid-auto-rows: 250px;
+            grid-auto-flow: dense;
+            /* Helps fill in gaps for a masonry look */
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px) scale(1.04);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* DYNAMIC SPANNING RULES
+       These rules apply a pattern to make the layout visually interesting.
+       You can add or modify these to change the pattern!
+    */
+        /* Every 5th image will be wider */
+        .gallery-item:nth-child(5n) {
+            grid-column: span 2;
+        }
+
+        /* Every 7th image will be taller */
+        .gallery-item:nth-child(7n) {
+            grid-row: span 2;
+        }
+
+        /* A more complex rule for variety */
+        .gallery-item:nth-child(8n - 4) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .dynamic-gallery-container {
+                padding: 1rem;
+            }
+
+            .dynamic-gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                grid-auto-rows: 200px;
+                gap: 1rem;
+            }
+
+            /* On mobile, reset all special spans for a cleaner, uniform look */
+            .gallery-item {
+                grid-column: auto !important;
+                grid-row: auto !important;
+            }
+        }
+
+        .photo-mosaic {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mosaic-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: showImage 2s 5s forwards;
+        }
+
+        .tile {
+            position: absolute;
+            width: 10%;
+            height: 10%;
+            /* background: #fff; */
+            opacity: 0;
+            animation: fadeTile 0.5s ease forwards;
+        }
+
+        .tile.fade-in {
+            opacity: 1;
+        }
+
+        @keyframes fadeTile {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 0.2;
+            }
+        }
+
+        @keyframes showImage {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="magic-sparkles"></div>
+    <div class="floating-hearts">
+        <!-- Hearts will be generated via CSS -->
+        <div class="heart" style="--float-duration: 6s; --delay: 0s; --translate-x: 20px;">💝</div>
+        <div class="heart" style="--float-duration: 8s; --delay: 1s; --translate-x: -30px;">💖</div>
+        <div class="heart" style="--float-duration: 7s; --delay: 2s; --translate-x: 40px;">💗</div>
+        <div class="heart" style="--float-duration: 9s; --delay: 3s; --translate-x: -20px;">💓</div>
+        <div class="heart" style="--float-duration: 5s; --delay: 4s; --translate-x: 30px;">💕</div>
+    </div>
+
+    <section class="welcome">
+        <h1>Our Story — Dhanesh ❤️ Yesha</h1>
+        <p>From the moment we met till every random moment that made us laugh , it’s been nothing short of magic.✨</p>
+    </section>
+
+    <div class="memory-container">
+        <div class="memory-card">
+            <img src="./d1.jpg" alt="First Date" class="memory-img">
+            <div class="memory-date">The First Time Our Paths Crossed</div>
+            <div class="memory-caption">
+                That first meeting still feels unreal , the shy smiles, the random talks, and the instant comfort.
+                It wasn’t just a moment; it was the beginning of something special. 💫
+            </div>
+        </div>
+        <div class="memory-card">
+            <img src="./d2.jpg" alt="Beach Day" class="memory-img">
+            <div class="memory-date">Gokul Ni Raas 💃🕺</div>
+            <div class="memory-caption">
+                Hu Gokul no Goveriyo, ane tu Gokul ni Gauran 💖
+                Navratri lights, garba beats, and you , everything about that night felt straight out of a dream. ✨
+            </div>
+        </div>
+        <div class="memory-card">
+            <img src="./d3.jpg" alt="Movie Night" class="memory-img">
+            <div class="memory-date">That Little Flower Moment 🌸</div>
+            <div class="memory-caption">
+                Me plucking that flower and placing it on your ear…
+                you smiled , and honestly, I still think about that smile.
+                You looked like poetry standing still. 💕
+            </div>
+        </div>
+
+    </div>
+
+    <section class="dynamic-gallery-container">
+        <h2>Moments in Pixels</h2>
+        <!-- The JavaScript will automatically fill this div with your images -->
+        <div class="dynamic-gallery-grid" id="gallery-grid">
+            <!-- Images will be generated here -->
+        </div>
+    </section>
+
+    <section class="final-message">
+        <h2>To My Yeshu ❤️</h2>
+        <p>
+            You’re not just a chapter , you’re my favorite story.<br>
+            Every laugh, every silence, every little chaos between us means everything.<br>
+            You’ve filled my world with peace, madness, and love all at once. 💫
+        </p>
+        <p>
+            On your birthday, I just want you to know , you’re irreplaceable.
+            And I’ll keep creating reasons for you to smile, over and over again. 💕
+        </p>
+        <a href="#" class="goodbye-btn">Always Yours — Dhanesh 💝</a>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- ⚙️ YOUR ONLY REQUIRED EDIT IS HERE ⚙️ ---
+            // Set this to the total number of images you have (e.g., 1, 2, 3... up to c7, so 7)
+            const imageCount = 20;
+            // --------------------------------------------------
+
+            const galleryGrid = document.getElementById('gallery-grid');
+            const imagePrefix = './c'; // The prefix for your image names
+            const imageSuffix = '.jpg';       // The file extension
+
+            // Loop to create and add each image to the gallery
+            for (let i = 1; i <= imageCount; i++) {
+                // Create the container div
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+
+                // Create the image element
+                const img = document.createElement('img');
+                img.src = `${imagePrefix}${i}${imageSuffix}`;
+                img.alt = `Our beautiful memory ${i}`;
+                // Basic error handling in case an image is missing
+                img.onerror = function () {
+                    this.style.display = 'none'; // Hide the broken image container
+                };
+
+                // Add the image to the container, and the container to the grid
+                galleryItem.appendChild(img);
+                galleryGrid.appendChild(galleryItem);
+            }
+        });
+    </script>
+
+    <audio id="bg-music" autoplay loop>
+        <source src="./Rembrandts_-_Ill_Be_There_For_You_(mp3.pm).mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener('click', () => {
+            const music = document.getElementById('bg-music');
+            if (music.paused) music.play();
+        });
+    </script>
+
+    <div class="photo-mosaic">
+        <img src="./c19.jpg" alt="Us" class="mosaic-img">
+    </div>
+
+    <script>
+        const mosaic = document.querySelector('.photo-mosaic');
+        const img = document.querySelector('.mosaic-img');
+
+        // Create 100 small div tiles
+        for (let i = 0; i < 100; i++) {
+            const tile = document.createElement('div');
+            tile.classList.add('tile');
+            mosaic.appendChild(tile);
+            setTimeout(() => {
+                tile.classList.add('fade-in');
+            }, 50 * i); // Stagger reveal effect
+        }
+    </script>
+
+
+</body>
+
+</html>
