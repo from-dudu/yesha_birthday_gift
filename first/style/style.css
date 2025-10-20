@@ -548,18 +548,3 @@ canvas {
     width: fit-content;
     white-space: nowrap;
 }
-
-.five {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 2rem;
-    box-sizing: border-box;
-    text-align: center;
-    overflow-y: auto;
-    /* enables vertical scroll */
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-}

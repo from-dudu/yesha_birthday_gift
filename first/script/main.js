@@ -297,11 +297,11 @@ const animationTimeline = () => {
   // tl.timeScale(2);
 
   // Restart Animation on click
-  const replyBtn = document.getElementById("replay");
-  replyBtn.addEventListener("click", () => {
-    // window.location.reload();
-    window.location.href = "../second/";
-  });
+  // const replyBtn = document.getElementById("replay");
+  // replyBtn.addEventListener("click", () => {
+  //   // window.location.reload();
+  //   window.location.href = "../second/";
+  // });
 };
 
 // click event to play the audio
